@@ -1,0 +1,18 @@
+ (venv) ❯❯ project-0 git:(main) 22:12 ls
+
+
+    Directory: C:\tmp\git\ADK\python\project-0
+
+ (venv) ❯❯ project-0 git:(main) 22:12 adk web --port 8080
+C:\tmp\git\ADK\python\project-0\venv\Lib\site-packages\google\adk\cli\fast_api.py:138: UserWarning: [EXPERIMENTAL] InMemoryCredentialService: This feature is experimental and may change or be removed in future versions without notice. It may introduce breaking changes at any time.
+  credential_service = InMemoryCredentialService()
+C:\tmp\git\ADK\python\project-0\venv\Lib\site-packages\google\adk\auth\credential_service\in_memory_credential_service.py:33: UserWarning: [EXPERIMENTAL] BaseCredentialService: This feature is experimental and may change or be removed in future versions without notice. It may introduce breaking changes at any time.        
+  super().__init__()
+INFO:     Started server process [23584]
+INFO:     Waiting for application startup.
+
++-----------------------------------------------------------------------------+
+| ADK Web Server started                                                      |
+|                                                                             |
+| For local testing, access at http://127.0.0.1:8080.                         |
++-----------------------------------------------------------------------------+
