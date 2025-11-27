@@ -1,0 +1,22 @@
+(venv) ❯❯ project-2-multi-agent git:(main) 22:35 ls
+
+
+    Directory: C:\tmp\git\ADK\python\project-2-multi-agent
+
+
+ (venv) ❯❯ project-2-multi-agent git:(main) 22:35 adk web --port 8080
+C:\tmp\git\ADK\python\project-2-multi-agent\venv\Lib\site-packages\google\adk\cli\fast_api.py:138: UserWarning: [EXPERIMENTAL] InMemoryCredentialService: This feature is experimental and may change or be removed in future versions without notice. It may introduce breaking changes at any time.
+  credential_service = InMemoryCredentialService()
+C:\tmp\git\ADK\python\project-2-multi-agent\venv\Lib\site-packages\google\adk\auth\credential_service\in_memory_credential_service.py:33: UserWarning: [EXPERIMENTAL] BaseCredentialService: This feature is experimental and may change or be removed in future versions without notice. It may introduce breaking changes at any time.
+  super().__init__()
+INFO:     Started server process [3628]
+INFO:     Waiting for application startup.
+
++-----------------------------------------------------------------------------+
+| ADK Web Server started                                                      |
+|                                                                             |
+| For local testing, access at http://127.0.0.1:8080.                         |
++-----------------------------------------------------------------------------+
+
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8080 (Press CTRL+C to quit)
