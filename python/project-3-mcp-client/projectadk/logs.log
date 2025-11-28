@@ -1,0 +1,75 @@
+(venv) ❯❯ project-3-mcp-client git:(main)  22:28 adk web --port 8080
+C:\tmp\temp\ADK-References\python\project-3-mcp-client\venv\Lib\site-packages\google\adk\cli\fast_api.py:138: UserWarning: [EXPERIMENTAL] InMemoryCredentialService: This feature is experimental and may change or be removed in future versions without notice. It may introduce breaking changes at any time.
+  credential_service = InMemoryCredentialService()
+C:\tmp\temp\ADK-References\python\project-3-mcp-client\venv\Lib\site-packages\google\adk\auth\credential_service\in_memory_credential_service.py:33: UserWarning: [EXPERIMENTAL] BaseCredentialService: This feature is experimental and may change or be removed in future versions without notice. It may introduce breaking changes at any time.
+  super().__init__()
+INFO:     Started server process [35268]
+INFO:     Waiting for application startup.
+
++-----------------------------------------------------------------------------+
+| ADK Web Server started                                                      |
+|                                                                             |
+| For local testing, access at http://127.0.0.1:8080.                         |
++-----------------------------------------------------------------------------+
+
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8080 (Press CTRL+C to quit)
+INFO:     127.0.0.1:57753 - "GET /dev-ui/?app=projectadk&session=3a10ddd4-0934-4f7d-9011-77d01ede6d13&userId=user HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57753 - "GET /dev-ui/chunk-2WH2EVR6.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:62706 - "GET /dev-ui/polyfills-B6TNHZQ6.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:60777 - "GET /dev-ui/main-P3SSB3YR.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:60777 - "GET /dev-ui/styles-DY6CQV66.css HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:60777 - "GET /dev-ui/assets/config/runtime-config.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60777 - "GET /list-apps?relative_path=./ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60777 - "GET /dev-ui/assets/ADK-512-color.svg HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:60777 - "GET /apps/projectadk/users/user/sessions/3a10ddd4-0934-4f7d-9011-77d01ede6d13 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62706 - "GET /builder/app/projectadk?ts=1764349148461 HTTP/1.1" 200 OK
+2025-11-28 22:29:08,578 - INFO - adk_web_server.py:605 - New session created: bfc191fb-e9e0-43a6-902c-a2d32f940bd9
+INFO:     127.0.0.1:62706 - "POST /apps/projectadk/users/user/sessions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62706 - "GET /apps/projectadk/users/user/sessions/bfc191fb-e9e0-43a6-902c-a2d32f940bd9 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62706 - "GET /dev-ui/adk_favicon.svg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60777 - "GET /debug/trace/session/bfc191fb-e9e0-43a6-902c-a2d32f940bd9 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62706 - "GET /apps/projectadk/eval_sets HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60777 - "GET /apps/projectadk/eval_results HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60777 - "GET /apps/projectadk/users/user/sessions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60777 - "GET /apps/projectadk/users/user/sessions HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54632 - "POST /run_sse HTTP/1.1" 200 OK
+2025-11-28 22:29:27,215 - INFO - envs.py:47 - Loaded .env file for projectadk at C:\tmp\temp\ADK-References\python\project-3-mcp-client\projectadk\.env
+2025-11-28 22:29:27,218 - INFO - envs.py:47 - Loaded .env file for projectadk at C:\tmp\temp\ADK-References\python\project-3-mcp-client\projectadk\.env
+2025-11-28 22:29:27,225 - INFO - agent_loader.py:127 - Found root_agent in projectadk.agent
+2025-11-28 22:29:27,228 - WARNING - runners.py:270 - App name mismatch detected. The runner is configured with app name "projectadk", but the root agent was loaded from "C:\tmp\temp\ADK-References\python\project-3-mcp-client\venv\Lib\site-packages\google\adk\agents", which implies app name "agents".
+2025-11-28 22:29:28,615 - INFO - _client.py:1740 - HTTP Request: POST http://127.0.0.1:9000/mcp "HTTP/1.1 200 OK"
+2025-11-28 22:29:28,615 - INFO - streamable_http.py:134 - Received session ID: 060b5721d7dd4048b49c2831fc53f915
+2025-11-28 22:29:28,615 - INFO - streamable_http.py:146 - Negotiated protocol version: 2025-06-18
+2025-11-28 22:29:28,637 - INFO - _client.py:1740 - HTTP Request: POST http://127.0.0.1:9000/mcp "HTTP/1.1 202 Accepted"       
+2025-11-28 22:29:28,643 - INFO - _client.py:1740 - HTTP Request: GET http://127.0.0.1:9000/mcp "HTTP/1.1 200 OK"
+2025-11-28 22:29:28,647 - INFO - _client.py:1740 - HTTP Request: POST http://127.0.0.1:9000/mcp "HTTP/1.1 200 OK"
+C:\tmp\temp\ADK-References\python\project-3-mcp-client\venv\Lib\site-packages\google\adk\tools\mcp_tool\mcp_tool.py:103: UserWarning: [EXPERIMENTAL] BaseAuthenticatedTool: This feature is experimental and may change or be removed in future versions without notice. It may introduce breaking changes at any time.
+  super().__init__(
+2025-11-28 22:29:28,664 - INFO - types.py:2382 -
+Note: Conversion of fields that are not included in the JSONSchema class are ignored.
+Json Schema is now supported natively by both Vertex AI and Gemini API. Users
+are recommended to pass/receive Json Schema directly to/from the API. For example:
+1. the counter part of GenerateContentConfig.response_schema is
+   GenerateContentConfig.response_json_schema, which accepts [JSON
+  Schema](https://json-schema.org/)
+2. the counter part of FunctionDeclaration.parameters is
+   FunctionDeclaration.parameters_json_schema, which accepts [JSON
+   Schema](https://json-schema.org/)
+3. the counter part of FunctionDeclaration.response is
+   FunctionDeclaration.response_json_schema, which accepts [JSON
+   Schema](https://json-schema.org/)
+
+2025-11-28 22:29:28,668 - WARNING - _api_client.py:105 - Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2025-11-28 22:29:30,870 - INFO - google_llm.py:163 - Sending out request, model: gemini-2.5-flash, backend: GoogleLLMVariant.GEMINI_API, stream: False
+2025-11-28 22:29:32,649 - INFO - _client.py:1740 - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2025-11-28 22:29:32,653 - INFO - google_llm.py:219 - Response received from the model.
+2025-11-28 22:29:32,653 - WARNING - types.py:6573 - Warning: there are non-text parts in the response: ['function_call'], returning concatenated text result from text parts. Check the full candidates.content.parts accessor to get the full model response.
+2025-11-28 22:29:32,665 - INFO - _client.py:1740 - HTTP Request: POST http://127.0.0.1:9000/mcp "HTTP/1.1 200 OK"
+2025-11-28 22:29:32,681 - INFO - _client.py:1740 - HTTP Request: POST http://127.0.0.1:9000/mcp "HTTP/1.1 200 OK"
+2025-11-28 22:29:32,699 - INFO - _client.py:1740 - HTTP Request: POST http://127.0.0.1:9000/mcp "HTTP/1.1 200 OK"
+2025-11-28 22:29:32,703 - WARNING - _api_client.py:105 - Both GOOGLE_API_KEY and GEMINI_API_KEY are set. Using GOOGLE_API_KEY.
+2025-11-28 22:29:33,519 - INFO - google_llm.py:163 - Sending out request, model: gemini-2.5-flash, backend: GoogleLLMVariant.GEMINI_API, stream: False
+2025-11-28 22:29:34,942 - INFO - _client.py:1740 - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2025-11-28 22:29:34,942 - INFO - google_llm.py:219 - Response received from the model.
+INFO:     127.0.0.1:54632 - "GET /debug/trace/session/bfc191fb-e9e0-43a6-902c-a2d32f940bd9 HTTP/1.1" 200 OK
