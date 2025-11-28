@@ -1,0 +1,35 @@
+(venv) ❯❯ project-3-mcp-client git:(main)  22:28 python .\mcp_server.py
+
+
+                       ╭──────────────────────────────────────────────────────────────────────────────╮
+                       │                                                                              │
+                       │                         ▄▀▀ ▄▀█ █▀▀ ▀█▀ █▀▄▀█ █▀▀ █▀█                        │
+                       │                         █▀  █▀█ ▄▄█  █  █ ▀ █ █▄▄ █▀▀                        │
+                       │                                                                              │
+                       │                                FastMCP 2.13.1                                │
+                       │                                                                              │
+                       │                                                                              │
+                       │                  🖥  Server name: Demo                                        │
+                       │                                                                              │
+                       │                  📦 Transport:   HTTP                                        │
+                       │                  🔗 Server URL:  http://127.0.0.1:9000/mcp                   │
+                       │                                                                              │
+                       │                  📚 Docs:        https://gofastmcp.com                       │
+                       │                  🚀 Hosting:     https://fastmcp.cloud                       │
+                       │                                                                              │
+                       ╰──────────────────────────────────────────────────────────────────────────────╯
+
+
+[11/28/25 22:28:58] INFO     Starting MCP server 'Demo' with transport 'http' on http://127.0.0.1:9000/mcp      server.py:2055
+INFO:     Started server process [33304]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:9000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:60779 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60780 - "POST /mcp HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:60781 - "GET /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60782 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60784 - "POST /mcp HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60785 - "POST /mcp HTTP/1.1" 200 OK
+johndow
+INFO:     127.0.0.1:60786 - "POST /mcp HTTP/1.1" 200 OK
