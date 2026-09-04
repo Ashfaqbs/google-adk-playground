@@ -1,0 +1,72 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.example.retail'
+version = '1.0.0'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    adkVersion = '1.4.0'
+    langchain4jVersion = '1.12.2'
+    junitVersion = '5.11.3'
+}
+
+dependencies {
+    implementation platform("dev.langchain4j:langchain4j-bom:${langchain4jVersion}")
+
+    implementation "com.google.adk:google-adk:${adkVersion}"
+    implementation "com.google.adk:google-adk-langchain4j:${adkVersion}"
+    implementation "dev.langchain4j:langchain4j-open-ai"
+
+    runtimeOnly 'org.slf4j:slf4j-simple:2.0.16'
+
+    testImplementation platform("org.junit:junit-bom:${junitVersion}")
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+def loadDotEnv() {
+    def envFile = file("${projectDir}/.env")
+    def vars = [:]
+    if (envFile.exists()) {
+        envFile.eachLine { line ->
+            line = line.trim()
+            if (line && !line.startsWith('#') && line.contains('=')) {
+                def idx = line.indexOf('=')
+                vars[line.substring(0, idx).trim()] = line.substring(idx + 1).trim()
+            }
+        }
+    }
+    return vars
+}
+
+def demoTask = { taskName, taskDescription, mainClassName ->
+    tasks.register(taskName, JavaExec) {
+        group = 'retail-demos'
+        description = taskDescription
+        classpath = sourceSets.main.runtimeClasspath
+        mainClass = mainClassName
+        environment loadDotEnv()
+        standardInput = System.in
+    }
+}
+
+demoTask('runOrderDemo', 'Order Support agent smoke test', 'com.example.retail.agents.OrderSupportAgentDemo')
+demoTask('runReturnsDemo', 'Returns agent smoke test', 'com.example.retail.agents.ReturnsAgentDemo')
+demoTask('runCatalogDemo', 'Product Discovery agent smoke test', 'com.example.retail.agents.ProductDiscoveryAgentDemo')
+demoTask('runFaqDemo', 'FAQ/Policy agent smoke test (needs policy_mcp_server.py running)', 'com.example.retail.agents.FaqPolicyAgentDemo')
+demoTask('runOrchestrator', 'Full multi-turn orchestrator demo (needs policy_mcp_server.py running)', 'com.example.retail.RetailSupportDemo')
