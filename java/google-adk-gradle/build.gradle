@@ -1,0 +1,73 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.example.adk'
+version = '1.0.0'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    adkVersion = '1.4.0'
+    langchain4jVersion = '1.12.2'
+}
+
+dependencies {
+    implementation platform("dev.langchain4j:langchain4j-bom:${langchain4jVersion}")
+
+    implementation "com.google.adk:google-adk:${adkVersion}"
+    implementation "com.google.adk:google-adk-langchain4j:${adkVersion}"
+    implementation "dev.langchain4j:langchain4j-open-ai"
+
+    runtimeOnly 'org.slf4j:slf4j-simple:2.0.16'
+}
+
+// Reads java/google-adk-gradle/.env (git-ignored) so demos can pick up
+// GROQ_API_KEY / GROQ_MODEL without exporting shell env vars manually.
+def loadDotEnv() {
+    def envFile = file("${projectDir}/.env")
+    def vars = [:]
+    if (envFile.exists()) {
+        envFile.eachLine { line ->
+            line = line.trim()
+            if (line && !line.startsWith('#') && line.contains('=')) {
+                def idx = line.indexOf('=')
+                vars[line.substring(0, idx).trim()] = line.substring(idx + 1).trim()
+            }
+        }
+    }
+    return vars
+}
+
+def demoTask = { taskName, taskDescription, mainClassName ->
+    tasks.register(taskName, JavaExec) {
+        group = 'adk-demos'
+        description = taskDescription
+        classpath = sourceSets.main.runtimeClasspath
+        mainClass = mainClassName
+        environment loadDotEnv()
+        standardInput = System.in
+    }
+}
+
+demoTask('runP0', 'p0: basic LlmAgent with function tools', 'com.example.adk.p0_basic_agent.BasicAgentDemo')
+demoTask('runP1', 'p1: LlmAgent backed by Groq via LangChain4j (OpenAI-compatible)', 'com.example.adk.p1_groq_llm.GroqAgentDemo')
+demoTask('runP2', 'p2: multi-agent orchestration with sub-agents', 'com.example.adk.p2_multi_agent.MultiAgentDemo')
+demoTask('runP3', 'p3: session state shared across agents', 'com.example.adk.p3_session_state.SessionStateDemo')
+demoTask('runP4', 'p4: structured output constrained to a JSON schema', 'com.example.adk.p4_structured_output.StructuredOutputDemo')
+demoTask('runP5', 'p5: streaming responses', 'com.example.adk.p5_streaming.StreamingDemo')
+demoTask('runP6', 'p6: MCP tool integration over streamable HTTP', 'com.example.adk.p6_mcp_tools.McpToolsDemo')
+
+tasks.register('runAll') {
+    group = 'adk-demos'
+    description = 'Run p0-p5 back to back (p6 needs the MCP server running separately, see README)'
+    dependsOn 'runP0', 'runP1', 'runP2', 'runP3', 'runP4', 'runP5'
+}
