@@ -16,10 +16,15 @@ public final class CatalogTools {
             @Schema(name = "query", description = "Product name or category keyword to search for")
                     String query) {
         List<Product> results = SERVICE.search(query);
-        if (results.isEmpty()) {
-            return Map.of("status", "error", "report", "No products matched '" + query + "'.");
-        }
-        return Map.of("status", "success", "items", results.stream().map(Product::name).toList());
+        return Map.of(
+                "status",
+                "success",
+                "items",
+                results.stream().map(Product::name).toList(),
+                "report",
+                results.isEmpty()
+                        ? "No products matched '" + query + "'."
+                        : "Found " + results.size() + " matching product(s).");
     }
 
     public static Map<String, Object> getRecommendations(
@@ -28,9 +33,14 @@ public final class CatalogTools {
                             description = "Product category to recommend from, e.g. garden")
                     String category) {
         List<Product> results = SERVICE.recommend(category);
-        if (results.isEmpty()) {
-            return Map.of("status", "error", "report", "No recommendations for '" + category + "'.");
-        }
-        return Map.of("status", "success", "items", results.stream().map(Product::name).toList());
+        return Map.of(
+                "status",
+                "success",
+                "items",
+                results.stream().map(Product::name).toList(),
+                "report",
+                results.isEmpty()
+                        ? "No recommendations for '" + category + "'."
+                        : "Found " + results.size() + " recommendation(s).");
     }
 }

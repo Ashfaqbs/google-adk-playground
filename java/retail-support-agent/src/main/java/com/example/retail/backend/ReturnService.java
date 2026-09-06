@@ -1,14 +1,15 @@
 package com.example.retail.backend;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public final class ReturnService {
 
     private final OrderService orderService;
-    private final Map<String, ReturnRequest> returns = new HashMap<>();
-    private int nextReturnId = 1;
+    private final Map<String, ReturnRequest> returns = new ConcurrentHashMap<>();
+    private final AtomicInteger nextReturnId = new AtomicInteger(1);
 
     public ReturnService(OrderService orderService) {
         this.orderService = orderService;
@@ -30,7 +31,7 @@ public final class ReturnService {
             throw new IllegalStateException(
                     "Order " + orderId + " item " + itemId + " is not eligible for return");
         }
-        String returnId = "RET-" + nextReturnId++;
+        String returnId = "RET-" + nextReturnId.getAndIncrement();
         ReturnRequest request = new ReturnRequest(returnId, orderId, itemId, reason, "Pending", 0.0);
         returns.put(returnId, request);
         return request;
