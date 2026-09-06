@@ -9,6 +9,9 @@ public final class GroqLlmFactory {
 
     private static final String GROQ_BASE_URL = "https://api.groq.com/openai/v1";
     private static final String DEFAULT_MODEL = "openai/gpt-oss-120b";
+    // Groq's on-demand tier enforces an org-wide 8000 tokens-per-minute cap that a multi-turn,
+    // multi-agent conversation can bump into; retry with backoff instead of failing the call.
+    private static final int MAX_RETRIES = 8;
 
     private GroqLlmFactory() {}
 
@@ -30,6 +33,7 @@ public final class GroqLlmFactory {
                         .apiKey(apiKey)
                         .modelName(modelName)
                         .timeout(Duration.ofSeconds(60))
+                        .maxRetries(MAX_RETRIES)
                         .build();
 
         // Streaming needs a StreamingChatModel too - the adapter throws otherwise.
